@@ -12,6 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -19,26 +20,27 @@ import org.springframework.data.annotation.LastModifiedDate;
 @Table(name="stdtable")
 public class Student {
 		
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long stdId;
 	
-	@NotBlank
-	private String stdName;
-	
-
     @Column(nullable = false)
     private String grade;
 	
-    
     @Column(nullable = false)
-    private String major;
-	
+    private String stdName;
+    
 	@Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     private Date joinDate;
 
+
+    @Column(nullable = false)
+    private String major;
+	
+	
 	public long getStdId() {
 		return stdId;
 	}
